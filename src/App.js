@@ -30,12 +30,17 @@ export default function App() {
   function handleShowAddFriend() {
     setShowAddFriend((show) => !show);
   }
- 
+
+  function handleAddfriend(friend) {
+    setFriends((friends) => [...friends, friend]);
+    setShowAddFriend(false);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
         <FriendLists friends={friends} />
-        {showAddFriend && <FormAddFriend  />}
+        {showAddFriend && <FormAddFriend onAddfriend={handleAddfriend} />}
         <Button onClick={handleShowAddFriend}>
           {showAddFriend ? "Close" : "Add Friend"}
         </Button>
